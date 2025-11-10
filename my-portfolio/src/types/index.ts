@@ -19,15 +19,15 @@ export interface Skill {
   color: string;
 }
 
-export interface Experience {
-  id: string;
-  company: string;
-  position: string;
-  period: string;
-  description: string[];
-  technologies: string[];
-  logo: string;
-}
+// export interface Experience {
+//   id: string;
+//   company: string;
+//   position: string;
+//   period: string;
+//   description: string[];
+//   technologies: string[];
+//   logo: string;
+// }
 
 export interface NavLink {
   name: string;

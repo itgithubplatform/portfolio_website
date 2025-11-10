@@ -24,7 +24,7 @@ export default function Projects() {
 
         <FadeIn delay={0.2}>
           <div className="flex justify-center gap-4 mb-12 flex-wrap">
-            {['all', 'web', 'fullstack', 'frontend'].map((cat) => (
+            {['all', 'ai', 'fullstack'].map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}

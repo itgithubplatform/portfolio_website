@@ -25,7 +25,7 @@ export default function Hero() {
 
         <FadeIn delay={0.2}>
           <h1 className="text-5xl md:text-7xl font-bold mb-4">
-            Hi, I'm <span className="text-gradient">Alex</span>
+            Hi, I'm <span className="text-gradient">Benu Gopal Kanjilal</span>
           </h1>
         </FadeIn>
 
@@ -39,7 +39,7 @@ export default function Hero() {
 
         <FadeIn delay={0.6}>
           <p className="text-xl text-slate-400 mb-8 max-w-2xl mx-auto">
-            I build exceptional digital experiences that make people's lives easier
+            I build exceptional digital experiences that make people's lives easier with AI tools.
           </p>
         </FadeIn>
 

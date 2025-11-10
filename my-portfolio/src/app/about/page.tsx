@@ -23,7 +23,7 @@ export default function About() {
               <div className="flex-1">
                 <h2 className="text-3xl font-bold mb-4">Hi, I'm Alex</h2>
                 <p className="text-slate-300 mb-4">
-                  I'm a passionate Full Stack Developer with 5+ years of experience building web applications. 
+                  I'm Benu Gopal Kanjilal, a passionate Full Stack Developer with 2+ years of experience building web applications and scalable AI/ML solutions. 
                   I love creating beautiful, functional, and user-friendly digital experiences.
                 </p>
                 <p className="text-slate-300">

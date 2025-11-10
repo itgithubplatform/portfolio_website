@@ -50,8 +50,8 @@ export default function Footer() {
               >
                 ❤️
               </motion.span>
-              <span>using Next.js</span>
-            </div>
+              <span>Made For My Perosnal and Insider work</span>
+          </div>
           </FadeIn>
         </div>
       </div>

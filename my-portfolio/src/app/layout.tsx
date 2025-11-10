@@ -6,8 +6,8 @@ import ClientLayout from '@/components/ui/client-layout';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Alex Developer - Portfolio',
-  description: 'Full Stack Developer Portfolio',
+  title: 'Benu Gopal  Kanjilal- Portfolio',
+  description: 'AI/ML with Full Stack Developer Portfolio',
 };
 
 export default function RootLayout({

@@ -32,7 +32,7 @@ export default function Hero() {
         <FadeIn delay={0.4}>
           <div className="text-2xl md:text-4xl mb-8 h-12">
             <Typewriter
-              texts={['Full Stack Developer', 'UI/UX Enthusiast', 'Problem Solver']}
+              texts={['Full Stack Developer', 'AI/ML Developer ', 'GenAI Enthusiatist']}
             />
           </div>
         </FadeIn>
@@ -44,14 +44,12 @@ export default function Hero() {
         </FadeIn>
 
         <FadeIn delay={0.8}>
-          <div className="flex gap-4 justify-center mb-8">
-            <Button href="/projects">View Projects</Button>
+          <div className="flex gap-4 justify-center mb-8 flex-wrap">
+            <Button href="https://drive.google.com/file/d/1ZSmZe-iUzy0MUVteZkByPnbIFbJfSvx6/view?usp=drive_link" target="_blank">
+              📄 View Resume
+            </Button>
             <Button variant="outline" href="/contact">Contact Me</Button>
           </div>
-        </FadeIn>
-
-        <FadeIn delay={1}>
-          <SocialIcons />
         </FadeIn>
       </div>
     </section>

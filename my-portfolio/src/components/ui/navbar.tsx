@@ -22,13 +22,25 @@ export default function Navbar() {
 
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-slate-300 hover:text-white transition-colors"
-              >
-                {link.name}
-              </Link>
+              link.href.startsWith('http') ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-300 hover:text-white transition-colors"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-slate-300 hover:text-white transition-colors"
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
           </div>
 
@@ -48,14 +60,27 @@ export default function Navbar() {
           className="md:hidden glass border-t border-white/10"
         >
           {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="block px-4 py-3 text-slate-300 hover:bg-white/10"
-              onClick={() => setIsOpen(false)}
-            >
-              {link.icon} {link.name}
-            </Link>
+            link.href.startsWith('http') ? (
+              <a
+                key={link.name}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-4 py-3 text-slate-300 hover:bg-white/10"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.icon} {link.name}
+              </a>
+            ) : (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="block px-4 py-3 text-slate-300 hover:bg-white/10"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.icon} {link.name}
+              </Link>
+            )
           ))}
         </motion.div>
       )}

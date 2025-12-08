@@ -54,7 +54,7 @@ export default function About() {
                         </motion.div>
                     </FadeIn>
 
-                    {/* Right: Stats Grid */}
+                    {/* Right: Info Grid */}
                     <FadeIn delay={0.4}>
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
@@ -63,29 +63,80 @@ export default function About() {
                             transition={{ duration: 0.6 }}
                             className="grid grid-cols-2 gap-6"
                         >
-                            {[
-                                { icon: '🎓', title: 'Education', value: 'B.Tech CSE', desc: '3rd Year' },
-                                { icon: '💼', title: 'Academic', value: 'CSE AIML', desc: '3rd Year' },
-                                { icon: '🏆', title: 'Achievements', value: '10+', desc: 'Certifications' },
-                                { icon: '🚀', title: 'Projects', value: '20+', desc: 'Completed' },
-                            ].map((stat, index) => (
-                                <motion.div
-                                    key={stat.title}
-                                    initial={{ scale: 0, rotate: -10 }}
-                                    whileInView={{ scale: 1, rotate: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.5 + index * 0.1, type: 'spring' }}
-                                    whileHover={{ scale: 1.05, rotate: 2 }}
-                                    className="gradient-border p-6 text-center hover-3d"
-                                >
-                                    <div className="text-5xl mb-3">{stat.icon}</div>
-                                    <div className="text-2xl font-bold text-gradient mb-2">
-                                        {stat.value}
-                                    </div>
-                                    <div className="text-slate-400 font-medium">{stat.title}</div>
-                                    <div className="text-sm text-slate-500">{stat.desc}</div>
-                                </motion.div>
-                            ))}
+                            {/* Education */}
+                            <motion.div
+                                initial={{ scale: 0, rotate: -10 }}
+                                whileInView={{ scale: 1, rotate: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.5, type: 'spring' }}
+                                whileHover={{ scale: 1.05 }}
+                                className="glass p-6 rounded-2xl"
+                            >
+                                <div className="text-4xl mb-3">🎓</div>
+                                <div className="text-lg font-bold text-white mb-3">Education</div>
+                                <div className="text-sm text-slate-300 space-y-1">
+                                    <div>B.Tech in CSE(AIML)</div>
+                                    <div>The Neotia University</div>
+                                    <div>CGPA: 8.89/10</div>
+                                    <div className="text-slate-400">2023-27</div>
+                                </div>
+                            </motion.div>
+
+                            {/* Location */}
+                            <motion.div
+                                initial={{ scale: 0, rotate: -10 }}
+                                whileInView={{ scale: 1, rotate: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.6, type: 'spring' }}
+                                whileHover={{ scale: 1.05 }}
+                                className="glass p-6 rounded-2xl"
+                            >
+                                <div className="text-4xl mb-3">📍</div>
+                                <div className="text-lg font-bold text-white mb-3">Location</div>
+                                <div className="text-sm text-slate-300 space-y-1">
+                                    <div>West Bengal, India</div>
+                                    <div>Mahishadal</div>
+                                    <div>East Medinipur</div>
+                                    <div className="text-slate-400">721654</div>
+                                </div>
+                            </motion.div>
+
+                            {/* Experience */}
+                            <motion.div
+                                initial={{ scale: 0, rotate: -10 }}
+                                whileInView={{ scale: 1, rotate: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.7, type: 'spring' }}
+                                whileHover={{ scale: 1.05 }}
+                                className="glass p-6 rounded-2xl"
+                            >
+                                <div className="text-4xl mb-3">💼</div>
+                                <div className="text-lg font-bold text-white mb-3">Experience</div>
+                                <div className="text-sm text-slate-300 space-y-1">
+                                    <div>10+ Production Deployments</div>
+                                    <div>Academic and Personal Projects</div>
+                                    <div className="text-slate-400">3 Internships Completed</div>
+                                </div>
+                            </motion.div>
+
+                            {/* Specialization */}
+                            <motion.div
+                                initial={{ scale: 0, rotate: -10 }}
+                                whileInView={{ scale: 1, rotate: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.8, type: 'spring' }}
+                                whileHover={{ scale: 1.05 }}
+                                className="glass p-6 rounded-2xl"
+                            >
+                                <div className="text-4xl mb-3">⚡</div>
+                                <div className="text-lg font-bold text-white mb-3">Specialization</div>
+                                <div className="text-sm text-slate-300 space-y-1">
+                                    <div>AI/ML</div>
+                                    <div>Deep Learning</div>
+                                    <div>NLP</div>
+                                    <div className="text-slate-400">Full-Stack Development</div>
+                                </div>
+                            </motion.div>
                         </motion.div>
                     </FadeIn>
                 </div>
@@ -135,6 +186,31 @@ export default function About() {
                                 </motion.div>
                             ))}
                         </div>
+                    </motion.div>
+                </FadeIn>
+
+                {/* Download Resume Button */}
+                <FadeIn delay={0.8}>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center mt-12"
+                    >
+                        <motion.a
+                            href="https://drive.google.com/file/d/1DqPJ6b5QN_0p_umhpAOtpnyx52lQCkvX/view?usp=sharing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.05, y: -5 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="glass px-8 py-4 rounded-2xl font-semibold text-lg inline-flex items-center gap-3 hover:border-purple-500/50 transition-all"
+                        >
+                            <svg className="w-6 h-6 fill-slate-300" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                            </svg>
+                            Download Resume
+                        </motion.a>
                     </motion.div>
                 </FadeIn>
             </div>

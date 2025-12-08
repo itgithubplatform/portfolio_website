@@ -6,6 +6,14 @@ import Button from '../ui/button';
 import Typewriter from '../animations/typewriter';
 import FadeIn from '../animations/fade-in';
 import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
+
+// Dynamically import 3D background to avoid SSR issues
+const AnimatedBackground = dynamic(() => import('../3d/animated-background'), {
+  ssr: false,
+  loading: () => null,
+});
+
 
 export default function Hero() {
   const [particles, setParticles] = useState<Array<{ id: number; left: string; delay: number }>>([]);
@@ -209,9 +217,8 @@ export default function Hero() {
         </FadeIn>
       </div>
 
-      {/* Background Gradient Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl opacity-50" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl opacity-50" />
+      {/* 3D Animated Background */}
+      <AnimatedBackground />
     </section>
   );
 }

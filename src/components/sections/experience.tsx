@@ -7,44 +7,47 @@ export default function Experience() {
     const experiences = [
         {
             id: 1,
-            logo: '🚀',
-            position: 'ML Engineering Intern',
-            company: 'Tech Innovations Lab',
-            period: 'Jun 2024 - Present',
+            logo: '💼',
+            position: 'Full Stack Web Developer Intern',
+            company: 'Unified Mentor',
+            period: 'Jul 2024',
             description: [
-                'Developed machine learning models for predictive analytics',
-                'Implemented neural networks using TensorFlow and PyTorch',
-                'Optimized model performance achieving 95% accuracy',
+                'Developed full-stack web applications using modern technologies',
+                'Built responsive user interfaces with React and Next.js',
+                'Designed and implemented RESTful APIs with Node.js and Express',
+                'Integrated databases and implemented authentication systems',
             ],
-            technologies: ['Python', 'TensorFlow', 'PyTorch', 'Scikit-learn'],
-            color: 'from-purple-500 to-pink-500',
+            technologies: ['React', 'Next.js', 'Node.js', 'Express', 'MongoDB'],
+            color: 'from-blue-500 to-cyan-500',
         },
         {
             id: 2,
-            logo: '💡',
-            position: 'Full-Stack Developer',
-            company: 'StartupHub',
-            period: 'Jan 2024 - May 2024',
+            logo: '🔐',
+            position: 'Cyber Security Intern',
+            company: 'DataSpace Academy',
+            period: 'Jun 2024 - Jul 2024',
             description: [
-                'Built responsive web applications using Next.js and React',
-                'Designed RESTful APIs with Node.js and Express',
-                'Integrated MongoDB for efficient data management',
+                'Conducted security assessments and vulnerability analysis',
+                'Implemented security best practices and protocols',
+                'Performed penetration testing and security audits',
+                'Developed security documentation and incident response procedures',
             ],
-            technologies: ['Next.js', 'React', 'Node.js', 'MongoDB'],
-            color: 'from-blue-500 to-cyan-500',
+            technologies: ['Kali Linux', 'Wireshark', 'Python', 'Network Security', 'Ethical Hacking'],
+            color: 'from-purple-500 to-pink-500',
         },
         {
             id: 3,
             logo: '🏆',
-            position: 'Winner - AI Hackathon',
-            company: 'TechFest 2024',
-            period: 'Mar 2024',
+            position: 'Top 10 Finalist',
+            company: 'Google Cloud GenAI Exchange Hackathon',
+            period: '2024',
             description: [
-                'Built an AI-powered chatbot using GenAI and LangChain',
-                'Implemented RAG system for context-aware responses',
-                'Won 1st place among 50+ teams',
+                'Built CareerSathi - An AI-powered skill gap analyzer and feedback provider',
+                'Leveraged Google Cloud AI services and GenAI for intelligent career guidance',
+                'Implemented personalized skill assessment and career path recommendations',
+                'Ranked among Top 10 teams out of hundreds of participants',
             ],
-            technologies: ['LangChain', 'OpenAI', 'Python', 'FastAPI'],
+            technologies: ['Google Cloud', 'GenAI', 'Python', 'LangChain', 'FastAPI', 'React'],
             color: 'from-pink-500 to-orange-500',
         },
     ];
@@ -61,11 +64,11 @@ export default function Experience() {
                         className="text-center mb-16"
                     >
                         <h2 className="text-5xl md:text-6xl font-bold mb-6">
-                            My <span className="text-gradient">Journey</span>
+                            Internships & <span className="text-gradient">Hackathons</span>
                         </h2>
                         <div className="w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 mx-auto rounded-full" />
                         <p className="text-xl text-slate-400 mt-6 max-w-2xl mx-auto">
-                            Internships, hackathons, and hands-on experience building impactful projects
+                            Real-world experience through internships and competitive hackathons
                         </p>
                     </motion.div>
                 </FadeIn>

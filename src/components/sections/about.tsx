@@ -65,7 +65,7 @@ export default function About() {
                         >
                             {[
                                 { icon: '🎓', title: 'Education', value: 'B.Tech CSE', desc: '3rd Year' },
-                                { icon: '💼', title: 'Experience', value: '3+ Years', desc: 'Coding' },
+                                { icon: '💼', title: 'Academic', value: 'CSE AIML', desc: '3rd Year' },
                                 { icon: '🏆', title: 'Achievements', value: '10+', desc: 'Certifications' },
                                 { icon: '🚀', title: 'Projects', value: '20+', desc: 'Completed' },
                             ].map((stat, index) => (

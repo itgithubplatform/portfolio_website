@@ -204,10 +204,15 @@ export default function About() {
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.05, y: -5 }}
                             whileTap={{ scale: 0.95 }}
-                            className="glass px-8 py-4 rounded-2xl font-semibold text-lg inline-flex items-center gap-3 hover:border-purple-500/50 transition-all"
+                            className="glass px-8 py-4 rounded-2xl font-semibold text-lg inline-flex items-center gap-3 hover:border-purple-500/50 transition-all group"
                         >
-                            <svg className="w-6 h-6 fill-slate-300" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                            <svg
+                                className="w-6 h-6 stroke-slate-300 group-hover:stroke-purple-400 transition-colors"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M9 17V11L7 13M9 11L11 13M15 11H17M13 15H17M13 7H17M6 3H18C19.1046 3 20 3.89543 20 5V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V5C4 3.89543 4.89543 3 6 3Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                             Download Resume
                         </motion.a>

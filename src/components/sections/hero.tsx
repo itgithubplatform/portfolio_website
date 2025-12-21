@@ -140,28 +140,7 @@ export default function Hero() {
           </motion.p>
         </FadeIn>
 
-        {/* Stats */}
-        <FadeIn delay={0.9}>
-          <div className="flex flex-wrap justify-center gap-8 mb-10">
-            {[
-              { number: '20+', label: 'Projects' },
-              { number: '5+', label: 'Technologies' },
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 1 + index * 0.1, type: "spring" }}
-                className="glass px-8 py-4 rounded-2xl hover-3d"
-              >
-                <div className="text-3xl md:text-4xl font-bold text-gradient mb-1">
-                  {stat.number}
-                </div>
-                <div className="text-slate-400 text-sm">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </FadeIn>
+
 
         {/* CTA Buttons */}
         <FadeIn delay={1.1}>
@@ -189,9 +168,15 @@ export default function Hero() {
                 href="https://drive.google.com/file/d/1DqPJ6b5QN_0p_umhpAOtpnyx52lQCkvX/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass px-10 py-5 rounded-2xl font-semibold text-lg inline-flex items-center gap-3 hover-3d"
+                className="glass px-10 py-5 rounded-2xl font-semibold text-lg inline-flex items-center gap-3 hover-3d group"
               >
-                <span className="text-2xl">📄</span>
+                <svg
+                  className="w-6 h-6 stroke-slate-300 group-hover:stroke-blue-400 transition-colors"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M9 17V11L7 13M9 11L11 13M15 11H17M13 15H17M13 7H17M6 3H18C19.1046 3 20 3.89543 20 5V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V5C4 3.89543 4.89543 3 6 3Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" stroke="currentColor" />
+                </svg>
                 Download Resume
               </a>
             </motion.div>
@@ -238,6 +223,20 @@ export default function Hero() {
             >
               <svg className="w-7 h-7 fill-slate-300 group-hover:fill-pink-400 transition-colors" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+              </svg>
+            </motion.a>
+
+            {/* Twitter/X */}
+            <motion.a
+              href="https://x.com/BenuKanjil55010"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.2, y: -5 }}
+              whileTap={{ scale: 0.9 }}
+              className="w-14 h-14 rounded-full glass flex items-center justify-center hover:border-sky-500/50 transition-all group"
+            >
+              <svg className="w-6 h-6 fill-slate-300 group-hover:fill-sky-400 transition-colors" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
             </motion.a>
           </div>

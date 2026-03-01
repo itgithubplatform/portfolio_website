@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './global.css';
 import ClientLayout from '@/components/ui/client-layout';
 import { Analytics } from '@vercel/analytics/react';
+import LoadingConfetti from '@/components/loading-confetti';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -96,6 +97,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <LoadingConfetti />
         <ClientLayout>{children}</ClientLayout>
         <Analytics />
       </body>

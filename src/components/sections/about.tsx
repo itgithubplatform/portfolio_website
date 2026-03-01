@@ -1,182 +1,144 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import FadeIn from '../animations/fade-in';
+import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import ScrollReveal, { StaggerContainer, StaggerItem } from '../animations/scroll-reveal';
+
+// Animated counter component
+function AnimatedCounter({ to, suffix = '' }: { to: number; suffix?: string }) {
+    const ref = useRef<HTMLSpanElement>(null);
+    const isInView = useInView(ref, { once: true, amount: 0.5 });
+    const count = useMotionValue(0);
+    const rounded = useTransform(count, (v) => `${Math.round(v)}${suffix}`);
+
+    useEffect(() => {
+        if (isInView) {
+            const controls = animate(count, to, { duration: 1.8, ease: [0.22, 1, 0.36, 1] });
+            return controls.stop;
+        }
+    }, [isInView, count, to]);
+
+    return <motion.span ref={ref}>{rounded}</motion.span>;
+}
+
+const STATS = [
+    { value: 10, suffix: '+', label: 'Projects Built' },
+    { value: 3, suffix: '', label: 'Internships' },
+    { value: 8.89, suffix: '/10', label: 'CGPA' },
+    { value: 100, suffix: '+', label: 'GitHub Commits' },
+];
+
+const INFO_CARDS = [
+    {
+        icon: '🎓', title: 'Education',
+        lines: ['B.Tech in CSE(AIML)', 'The Neotia University', 'CGPA: 8.89/10'],
+        sub: '2023–27',
+    },
+    {
+        icon: '📍', title: 'Location',
+        lines: ['West Bengal, India', 'Mahishadal', 'East Medinipur'],
+        sub: '721654',
+    },
+    {
+        icon: '💼', title: 'Experience',
+        lines: ['10+ Production Deployments', 'Academic & Personal Projects'],
+        sub: '3 Internships Completed',
+    },
+    {
+        icon: '⚡', title: 'Specialization',
+        lines: ['AI/ML', 'Deep Learning', 'NLP'],
+        sub: 'Full-Stack Development',
+    },
+];
 
 export default function About() {
     return (
         <section id="about" className="relative py-32 px-4">
             <div className="max-w-6xl mx-auto">
-                <FadeIn>
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center mb-16"
-                    >
-                        <h2 className="text-5xl md:text-6xl font-bold mb-6">
-                            About <span className="text-gradient">Me</span>
-                        </h2>
-                        <div className="w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 mx-auto rounded-full" />
-                    </motion.div>
-                </FadeIn>
 
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                    {/* Left: Description */}
-                    <FadeIn delay={0.2}>
-                        <motion.div
-                            initial={{ opacity: 0, x: -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                            className="space-y-6"
-                        >
-                            <div className="glass p-8 rounded-3xl">
-                                <h3 className="text-3xl font-bold mb-4 text-gradient">
-                                    Building the Future with AI
-                                </h3>
-                                <p className="text-lg text-slate-300 leading-relaxed mb-4">
-                                    I'm a passionate <span className="text-purple-400 font-semibold">B.Tech 3rd Year student</span> with
-                                    a deep interest in leveraging cutting-edge technologies to solve real-world problems.
-                                </p>
-                                <p className="text-lg text-slate-300 leading-relaxed mb-4">
-                                    My expertise spans across <span className="text-blue-400 font-semibold">Artificial Intelligence</span>,
-                                    {' '}<span className="text-pink-400 font-semibold">Machine Learning</span>, and
-                                    {' '}<span className="text-cyan-400 font-semibold">Full-Stack Web Development</span>,
-                                    with a special focus on GenAI applications.
-                                </p>
-                                <p className="text-lg text-slate-300 leading-relaxed">
-                                    I'm constantly exploring new technologies, participating in hackathons, and building
-                                    projects that make a difference. Let's create something amazing together!
-                                </p>
+                {/* Section Header */}
+                <ScrollReveal type="blur-in" className="text-center mb-16">
+                    <h2 className="text-5xl md:text-6xl font-bold mb-6">
+                        About <span className="text-gradient">Me</span>
+                    </h2>
+                    <div className="w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 mx-auto rounded-full" />
+                </ScrollReveal>
+
+                {/* Stats Row — animated counters */}
+                <StaggerContainer staggerDelay={0.12} className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+                    {STATS.map((stat) => (
+                        <StaggerItem key={stat.label} type="scale-up">
+                            <div className="glass p-6 rounded-2xl text-center group hover:border-purple-500/40 transition-all duration-300">
+                                <div className="text-3xl md:text-4xl font-black text-gradient mb-1">
+                                    <AnimatedCounter to={stat.value} suffix={stat.suffix} />
+                                </div>
+                                <div className="text-slate-400 text-sm">{stat.label}</div>
                             </div>
-                        </motion.div>
-                    </FadeIn>
+                        </StaggerItem>
+                    ))}
+                </StaggerContainer>
 
-                    {/* Right: Info Grid */}
-                    <FadeIn delay={0.4}>
-                        <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                            className="grid grid-cols-2 gap-6"
-                        >
-                            {/* Education */}
-                            <motion.div
-                                initial={{ scale: 0, rotate: -10 }}
-                                whileInView={{ scale: 1, rotate: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.5, type: 'spring' }}
-                                whileHover={{ scale: 1.05 }}
-                                className="glass p-6 rounded-2xl"
-                            >
-                                <div className="text-4xl mb-3">🎓</div>
-                                <div className="text-lg font-bold text-white mb-3">Education</div>
-                                <div className="text-sm text-slate-300 space-y-1">
-                                    <div>B.Tech in CSE(AIML)</div>
-                                    <div>The Neotia University</div>
-                                    <div>CGPA: 8.89/10</div>
-                                    <div className="text-slate-400">2023-27</div>
-                                </div>
-                            </motion.div>
+                {/* Main content grid */}
+                <div className="grid md:grid-cols-2 gap-12 items-start">
 
-                            {/* Location */}
-                            <motion.div
-                                initial={{ scale: 0, rotate: -10 }}
-                                whileInView={{ scale: 1, rotate: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.6, type: 'spring' }}
-                                whileHover={{ scale: 1.05 }}
-                                className="glass p-6 rounded-2xl"
-                            >
-                                <div className="text-4xl mb-3">📍</div>
-                                <div className="text-lg font-bold text-white mb-3">Location</div>
-                                <div className="text-sm text-slate-300 space-y-1">
-                                    <div>West Bengal, India</div>
-                                    <div>Mahishadal</div>
-                                    <div>East Medinipur</div>
-                                    <div className="text-slate-400">721654</div>
-                                </div>
-                            </motion.div>
+                    {/* Left — Bio */}
+                    <ScrollReveal type="fade-left" delay={0.1}>
+                        <div className="glass p-8 rounded-3xl">
+                            <h3 className="text-3xl font-bold mb-4 text-gradient">
+                                Building the Future with AI
+                            </h3>
+                            <p className="text-lg text-slate-300 leading-relaxed mb-4">
+                                I'm a passionate{' '}
+                                <span className="text-purple-400 font-semibold">B.Tech 3rd Year student</span>{' '}
+                                with a deep interest in leveraging cutting-edge technologies to solve real-world problems.
+                            </p>
+                            <p className="text-lg text-slate-300 leading-relaxed mb-4">
+                                My expertise spans across{' '}
+                                <span className="text-blue-400 font-semibold">Artificial Intelligence</span>,{' '}
+                                <span className="text-pink-400 font-semibold">Machine Learning</span>, and{' '}
+                                <span className="text-cyan-400 font-semibold">Full-Stack Web Development</span>,
+                                with a special focus on GenAI applications.
+                            </p>
+                            <p className="text-lg text-slate-300 leading-relaxed">
+                                I'm constantly exploring new technologies, participating in hackathons, and building
+                                projects that make a difference. Let's create something amazing together!
+                            </p>
+                        </div>
+                    </ScrollReveal>
 
-                            {/* Experience */}
-                            <motion.div
-                                initial={{ scale: 0, rotate: -10 }}
-                                whileInView={{ scale: 1, rotate: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.7, type: 'spring' }}
-                                whileHover={{ scale: 1.05 }}
-                                className="glass p-6 rounded-2xl"
-                            >
-                                <div className="text-4xl mb-3">💼</div>
-                                <div className="text-lg font-bold text-white mb-3">Experience</div>
-                                <div className="text-sm text-slate-300 space-y-1">
-                                    <div>10+ Production Deployments</div>
-                                    <div>Academic and Personal Projects</div>
-                                    <div className="text-slate-400">3 Internships Completed</div>
-                                </div>
-                            </motion.div>
-
-                            {/* Specialization */}
-                            <motion.div
-                                initial={{ scale: 0, rotate: -10 }}
-                                whileInView={{ scale: 1, rotate: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.8, type: 'spring' }}
-                                whileHover={{ scale: 1.05 }}
-                                className="glass p-6 rounded-2xl"
-                            >
-                                <div className="text-4xl mb-3">⚡</div>
-                                <div className="text-lg font-bold text-white mb-3">Specialization</div>
-                                <div className="text-sm text-slate-300 space-y-1">
-                                    <div>AI/ML</div>
-                                    <div>Deep Learning</div>
-                                    <div>NLP</div>
-                                    <div className="text-slate-400">Full-Stack Development</div>
-                                </div>
-                            </motion.div>
-                        </motion.div>
-                    </FadeIn>
+                    {/* Right — Info cards */}
+                    <StaggerContainer staggerDelay={0.1} className="grid grid-cols-2 gap-4">
+                        {INFO_CARDS.map((card) => (
+                            <StaggerItem key={card.title} type="flip-x">
+                                <motion.div
+                                    whileHover={{ scale: 1.05, y: -4 }}
+                                    className="glass p-5 rounded-2xl cursor-default"
+                                >
+                                    <div className="text-3xl mb-2">{card.icon}</div>
+                                    <div className="text-base font-bold text-white mb-2">{card.title}</div>
+                                    <div className="text-xs text-slate-300 space-y-0.5">
+                                        {card.lines.map((l) => <div key={l}>{l}</div>)}
+                                        <div className="text-slate-500 pt-1">{card.sub}</div>
+                                    </div>
+                                </motion.div>
+                            </StaggerItem>
+                        ))}
+                    </StaggerContainer>
                 </div>
 
-                {/* Specializations */}
-                <FadeIn delay={0.6}>
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="mt-16"
-                    >
-                        <h3 className="text-3xl font-bold text-center mb-8">
-                            What I <span className="text-gradient">Specialize</span> In
-                        </h3>
-                        <div className="grid md:grid-cols-3 gap-6">
-                            {[
-                                {
-                                    icon: '🤖',
-                                    title: 'AI & Machine Learning',
-                                    desc: 'Deep Learning, Neural Networks, Computer Vision, NLP',
-                                },
-                                {
-                                    icon: '💻',
-                                    title: 'Full-Stack Development',
-                                    desc: 'React, Next.js, Node.js, MongoDB, PostgreSQL',
-                                },
-                                {
-                                    icon: '⚡',
-                                    title: 'GenAI Applications',
-                                    desc: 'LLMs, RAG Systems, AI Agents, Prompt Engineering',
-                                },
-                            ].map((spec, index) => (
+                {/* Specialisations */}
+                <ScrollReveal type="fade-up" delay={0.1} className="mt-20">
+                    <h3 className="text-3xl font-bold text-center mb-8">
+                        What I <span className="text-gradient">Specialize</span> In
+                    </h3>
+                    <StaggerContainer staggerDelay={0.1} className="grid md:grid-cols-3 gap-6">
+                        {[
+                            { icon: '🤖', title: 'AI & Machine Learning', desc: 'Deep Learning, Neural Networks, Computer Vision, NLP' },
+                            { icon: '💻', title: 'Full-Stack Development', desc: 'React, Next.js, Node.js, MongoDB, PostgreSQL' },
+                            { icon: '⚡', title: 'GenAI Applications', desc: 'LLMs, RAG Systems, AI Agents, Prompt Engineering' },
+                        ].map((spec) => (
+                            <StaggerItem key={spec.title} type="scale-up">
                                 <motion.div
-                                    key={spec.title}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.7 + index * 0.1 }}
                                     whileHover={{ y: -10 }}
                                     className="glass p-8 rounded-3xl text-center card-3d"
                                 >
@@ -184,40 +146,27 @@ export default function About() {
                                     <h4 className="text-xl font-bold mb-3">{spec.title}</h4>
                                     <p className="text-slate-400">{spec.desc}</p>
                                 </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
-                </FadeIn>
+                            </StaggerItem>
+                        ))}
+                    </StaggerContainer>
+                </ScrollReveal>
 
-                {/* Download Resume Button */}
-                <FadeIn delay={0.8}>
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center mt-12"
+                {/* Download Resume */}
+                <ScrollReveal type="scale-up" delay={0.2} className="text-center mt-12">
+                    <motion.a
+                        href="https://drive.google.com/file/d/1DqPJ6b5QN_0p_umhpAOtpnyx52lQCkvX/view?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05, y: -5 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="glass px-8 py-4 rounded-2xl font-semibold text-lg inline-flex items-center gap-3 hover:border-purple-500/50 transition-all group"
                     >
-                        <motion.a
-                            href="https://drive.google.com/file/d/1DqPJ6b5QN_0p_umhpAOtpnyx52lQCkvX/view?usp=sharing"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            whileHover={{ scale: 1.05, y: -5 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="glass px-8 py-4 rounded-2xl font-semibold text-lg inline-flex items-center gap-3 hover:border-purple-500/50 transition-all group"
-                        >
-                            <svg
-                                className="w-6 h-6 stroke-slate-300 group-hover:stroke-purple-400 transition-colors"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path d="M9 17V11L7 13M9 11L11 13M15 11H17M13 15H17M13 7H17M6 3H18C19.1046 3 20 3.89543 20 5V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V5C4 3.89543 4.89543 3 6 3Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                            Download Resume
-                        </motion.a>
-                    </motion.div>
-                </FadeIn>
+                        <svg className="w-6 h-6 stroke-slate-300 group-hover:stroke-purple-400 transition-colors" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 17V11L7 13M9 11L11 13M15 11H17M13 15H17M13 7H17M6 3H18C19.1046 3 20 3.89543 20 5V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V5C4 3.89543 4.89543 3 6 3Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        Download Resume
+                    </motion.a>
+                </ScrollReveal>
             </div>
         </section>
     );

@@ -8,6 +8,7 @@ import { z } from 'zod';
 import emailjs from '@emailjs/browser';
 import toast, { Toaster } from 'react-hot-toast';
 import FadeIn from '../animations/fade-in';
+import { RippleButton } from '../ui/ripple-button';
 
 // Form validation schema
 const contactSchema = z.object({
@@ -268,28 +269,33 @@ export default function ContactForm() {
                   )}
                 </div>
 
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
+
+                <motion.div
                   whileHover={{ scale: isSubmitting ? 1 : 1.02, y: isSubmitting ? 0 : -2 }}
                   whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                  className={`w-full px-8 py-5 rounded-xl font-bold text-lg ${isSubmitting
+                >
+                  <RippleButton
+                    type="submit"
+                    disabled={isSubmitting}
+                    rippleColor="#a855f7"
+                    className={`w-full px-8 py-5 rounded-xl font-bold text-lg ${isSubmitting
                       ? 'bg-slate-700 cursor-not-allowed'
                       : 'bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 glow-purple'
-                    } transition-all`}
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center justify-center gap-2">
-                      <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                      </svg>
-                      Sending...
-                    </span>
-                  ) : (
-                    'Send Message 🚀'
-                  )}
-                </motion.button>
+                      } transition-all`}
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center justify-center gap-2">
+                        <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                        </svg>
+                        Sending...
+                      </span>
+                    ) : (
+                      'Send Message 🚀'
+                    )}
+                  </RippleButton>
+                </motion.div>
               </form>
             </motion.div>
           </FadeIn>

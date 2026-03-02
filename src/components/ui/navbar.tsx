@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { name: 'Skills', href: '#skills', icon: '⚡' },
   { name: 'Experience', href: '#experience', icon: '🏢' },
   { name: 'Projects', href: '#projects', icon: '🚀' },
+  { name: 'Certifications', href: '#certifications', icon: '🎓' },
   { name: 'Contact', href: '#contact', icon: '📧' },
 ];
 
@@ -23,7 +24,7 @@ export default function Navbar() {
       setScrolled(window.scrollY > 30);
 
       // Active section tracking
-      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'contact'];
+      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'certifications', 'contact'];
       let current = 'home';
       for (const id of sections) {
         const el = document.getElementById(id);
@@ -57,8 +58,8 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled
-            ? 'nav-scrolled py-2'
-            : 'nav-top py-4'
+          ? 'nav-scrolled py-2'
+          : 'nav-top py-4'
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,8 +96,8 @@ export default function Navbar() {
                     whileHover={{ scale: 1.04 }}
                     whileTap={{ scale: 0.96 }}
                     className={`nav-link relative px-4 py-1.5 rounded-xl text-sm font-medium transition-all duration-300 ${isActive
-                        ? 'text-white nav-link-active'
-                        : 'text-slate-400 hover:text-slate-100'
+                      ? 'text-white nav-link-active'
+                      : 'text-slate-400 hover:text-slate-100'
                       }`}
                   >
                     {isActive && (
@@ -200,8 +201,8 @@ export default function Navbar() {
                       transition={{ delay: i * 0.06 }}
                       onClick={() => handleNavClick(item.href)}
                       className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl text-left transition-all duration-200 group ${isActive
-                          ? 'bg-gradient-to-r from-purple-600/30 to-blue-600/20 border border-purple-500/30 text-white'
-                          : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                        ? 'bg-gradient-to-r from-purple-600/30 to-blue-600/20 border border-purple-500/30 text-white'
+                        : 'text-slate-300 hover:bg-white/5 hover:text-white'
                         }`}
                     >
                       <span className="text-xl w-8 text-center">{item.icon}</span>

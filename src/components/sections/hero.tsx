@@ -144,6 +144,56 @@ export default function Hero() {
             </motion.a>
 
 
+            {/* Download Resume */}
+            <motion.a
+              href="https://drive.google.com/file/d/YOUR_RESUME_ID/view"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.96 }}
+              className="hero-btn-ghost inline-flex items-center gap-3 px-8 py-3.5 rounded-full font-bold text-sm md:text-base text-white group relative overflow-hidden"
+            >
+              {/* Animated shimmer on hover */}
+              <span
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(120deg, transparent 0%, rgba(168,85,247,0.12) 40%, transparent 80%)',
+                }}
+              />
+
+              {/* Custom Resume Icon */}
+              <span className="relative flex items-center justify-center w-7 h-7">
+                {/* Document body */}
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-5 h-5 text-purple-400 group-hover:text-purple-300 transition-colors"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.8}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="12" y1="18" x2="12" y2="12" />
+                  <polyline points="9 15 12 18 15 15" />
+                </svg>
+              </span>
+
+              <span className="relative z-10">Download Résumé</span>
+
+              {/* Animated download arrow */}
+              <motion.span
+                animate={{ y: [0, 3, 0] }}
+                transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+                className="relative z-10"
+              >
+                <svg viewBox="0 0 16 16" className="w-4 h-4 text-slate-400 group-hover:text-purple-400 transition-colors" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
+                  <path d="M8 3v8M5 8l3 3 3-3" />
+                  <line x1="3" y1="13" x2="13" y2="13" />
+                </svg>
+              </motion.span>
+            </motion.a>
           </motion.div>
 
           {/* Social Links */}
@@ -335,7 +385,17 @@ export default function Hero() {
                   <div className="text-center">
                     <p className="text-white font-bold text-lg tracking-wide">Benu Gopal</p>
                     <p className="text-purple-400 text-sm font-medium mt-0.5">AI/ML · Full Stack Dev</p>
-                    <p className="text-slate-500 text-xs mt-1">The Neotia University</p>
+                    <div className="flex items-center gap-1.5 justify-center mt-1.5">
+                      <span className="text-[10px] text-slate-500">🏛️</span>
+                      <p className="text-slate-400 text-xs font-medium">The Neotia University</p>
+                      <span className="text-slate-600 text-[10px]">·</span>
+                      <span
+                        className="text-[10px] font-bold px-2 py-0.5 rounded-full"
+                        style={{ background: 'rgba(147,51,234,0.15)', color: '#c084fc', border: '1px solid rgba(147,51,234,0.3)' }}
+                      >
+                        2023–27
+                      </span>
+                    </div>
                   </div>
 
 

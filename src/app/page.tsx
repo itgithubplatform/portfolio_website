@@ -6,6 +6,7 @@ import Skills from '@/components/sections/skills';
 import Experience from '@/components/sections/experience';
 import ProjectsGrid from '@/components/sections/projects-grid';
 import ContactForm from '@/components/sections/contact-form';
+import Certifications from '@/components/sections/certifications';
 import TechMarquee from '@/components/ui/tech-marquee';
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
       <Skills />
       <Experience />
       <ProjectsGrid />
+      <Certifications />
       <ContactForm />
     </>
   );

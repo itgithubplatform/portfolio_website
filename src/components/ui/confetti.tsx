@@ -91,6 +91,9 @@ const Confetti = forwardRef<ConfettiRef, ConfettiProps>((props, ref) => {
             const particleCount = options?.particleCount || 50;
             const colors = options?.colors || ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
 
+            // Capture as a definite non-null constant so TypeScript trusts it inside class methods
+            const canvasEl: HTMLCanvasElement = canvas;
+
             class Particle {
                 x: number;
                 y: number;
@@ -101,8 +104,8 @@ const Confetti = forwardRef<ConfettiRef, ConfettiProps>((props, ref) => {
                 gravity: number;
 
                 constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height - canvas.height;
+                    this.x = Math.random() * canvasEl.width;
+                    this.y = Math.random() * canvasEl.height - canvasEl.height;
                     this.size = Math.random() * 5 + 5;
                     this.speedX = Math.random() * 3 - 1.5;
                     this.speedY = Math.random() * -3 - 3;
@@ -115,9 +118,9 @@ const Confetti = forwardRef<ConfettiRef, ConfettiProps>((props, ref) => {
                     this.y += this.speedY;
                     this.speedY += this.gravity;
 
-                    if (this.y > canvas.height) {
+                    if (this.y > canvasEl.height) {
                         this.y = -10;
-                        this.x = Math.random() * canvas.width;
+                        this.x = Math.random() * canvasEl.width;
                         this.speedY = Math.random() * -3 - 3;
                     }
                 }
@@ -128,6 +131,7 @@ const Confetti = forwardRef<ConfettiRef, ConfettiProps>((props, ref) => {
                     ctx.fillRect(this.x, this.y, this.size, this.size);
                 }
             }
+
 
             instanceRef.current = (opts: ConfettiOptions = {}) => {
                 particles.length = 0;

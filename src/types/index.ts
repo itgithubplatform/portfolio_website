@@ -3,12 +3,18 @@ export interface Project {
   title: string;
   description: string;
   detailedDescription: string;
+  longDescription?: string;
   technologies: string[];
   githubUrl: string;
   liveUrl?: string;
-  image: string;
+  image: string;               // Emoji fallback
+  imageUrl?: string;           // Real image path
   featured: boolean;
   category: string[];
+  status: 'Completed' | 'In Progress' | 'Archived';
+  year: string;
+  highlights?: string[];       // Key achievements / bullet points shown in popup
+  metrics?: { label: string; value: string }[];
 }
 
 export interface Skill {
@@ -18,16 +24,6 @@ export interface Skill {
   icon: string;
   color: string;
 }
-
-// export interface Experience {
-//   id: string;
-//   company: string;
-//   position: string;
-//   period: string;
-//   description: string[];
-//   technologies: string[];
-//   logo: string;
-// }
 
 export interface NavLink {
   name: string;

@@ -175,33 +175,4 @@ export const projects: Project[] = [
       { label: 'Cache Latency', value: '<100ms' },
     ],
   },
-  {
-    id: '10',
-    title: 'NeuroSeg: Brain Tumor Segmentation',
-    description: 'U-Net based MRI brain tumor segmentation achieving state-of-the-art Dice score.',
-    detailedDescription: 'U-Net architecture for precise brain tumor segmentation on MRI scans.',
-    longDescription:
-      'NeuroSeg is a medical image segmentation system using a custom U-Net with residual connections for precise tumor boundary delineation in brain MRI scans. Trained on the BraTS2021 dataset, the model achieves top-tier Dice scores across whole tumor, tumor core, and enhancing tumor sub-regions. Packaged as a DICOM-compatible REST API for neuro-radiology workflows.',
-    technologies: ['Python', 'PyTorch', 'U-Net', 'Medical Imaging', 'DICOM', 'BraTS', 'FastAPI'],
-    githubUrl: 'https://github.com/itgithubplatform/neuroseg',
-    liveUrl: undefined,
-    image: '🧠',
-    imageUrl: '/project-images/neuroseg.jpg',
-    featured: false,
-    category: ['Deep Learning', 'Computer Vision'],
-    status: 'In Progress',
-    year: '2025',
-    highlights: [
-      'Residual U-Net achieving Dice score 0.89 on BraTS2021',
-      'Multi-class segmentation: whole tumor, core, enhancing regions',
-      'DICOM-compatible REST API for radiology integration',
-      'Data augmentation pipeline with 3D elastic deformations',
-      '3D volumetric visualization of segmented regions',
-    ],
-    metrics: [
-      { label: 'Dice Score', value: '0.89' },
-      { label: 'Dataset', value: 'BraTS2021' },
-      { label: 'Regions', value: '3-class' },
-    ],
-  },
 ];
